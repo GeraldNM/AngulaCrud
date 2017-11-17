@@ -1,0 +1,75 @@
+﻿@model AngularDataAccess.Employee
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    textbox {
+        padding: 5px;
+        border: 1px solid groove;
+    }
+
+    input.ng-dirty.ng-invalid {
+        border: 1px solid red;
+        background-color: rgb(255, 244, 244);
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+<h2 style="text-align:center">Edit Employee Record</h2>
+<br><hr />
+
+
+<div ng-controller="EmpController">
+    <form name="CreateForm" ng-submit="EmployeeRecord(Employee)" novalidate>
+        <div style="color:red">{{message}}</div>
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>
+                    <input class="textbox" type="number" ng-model="EmployeeId" name="eId" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="EmployeeFirstName" name="eFirstName" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="EmployeeSurname" name="eSurname" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>Identity Type</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="EmployeeIdentityType" name="eIdentityType" />
+
+            </tr>
+            <tr>
+                <td>Identity Number</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="EmployeeIdentityNumber" name="eIdentityNumber" />
+
+                </td>
+            </tr>
+            <tr>
+                <td>DateOfBirth</td>
+                <td>
+                    <input class="textbox" type="text" ng-model="EmployeeDateOfBirth" name="eDateOfBirth" />
+
+                </td>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-success" style="" value="Create" />
+        <p class="btn btn-primary"> @Html.ActionLink("Back to List", "Index", null, new { style = "color:White" })</p>
+    </form>
+</div>

@@ -1,0 +1,155 @@
+﻿@{
+
+    ViewBag.Title = "Index";
+
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+@*<script src="~/Scripts/angular.js"></script>*@
+
+<script src="~/Scripts/EmployeeModel.js"></script>
+<script src="~/Scripts/EmployeeController.js"></script>
+
+<script src="~/Scripts/EmployeeService.js"></script>
+
+<h2>Employee Details :</h2>
+<div ng-controller="EmployeeCntr">
+    @*<script src="~/scripts/bootstrap.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+    <input type="submit" value="Add Employee" ng-click="AddNewEmployee()" />
+
+
+    <div id="dvEmployeeDetails">
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+
+                <td>
+                    <b>Employee Name</b>
+                </td>
+                <td>
+                    <b>Surname</b>
+                </td>
+                <td>
+                    <b>Identity Type</b>
+                </td>
+                <td>
+                    <b>Identity Number </b>
+                </td>
+                <td>
+                    <b>Date Of Birth </b>
+                </td>
+            </tr>
+            <tr ng-repeat="emp in Employee">
+
+                <td>
+
+                    {{$index+1}}
+                    {{emp.FirstName }}
+
+
+                </td>
+                <td ng-show="a">
+                    <input type="text" ng-model="emp.FirstName" />
+                </td>
+                <td ng-hide="a">
+
+                    {{emp.FirstName }}
+
+
+                </td>
+                <td ng-show="a">
+                    <input type="text" ng-model="emp.Surname" />
+                </td>
+                <td ng-hide="a">
+
+                    {{emp.Surname}}
+
+
+                </td>
+                <td ng-show="a">
+                    <input type="text" ng-model="emp.IdentityType" />
+                </td>
+                <td ng-hide="a">
+
+                    {{emp.IdentityType}}
+
+
+                </td>
+
+                <td ng-show="a">
+                    <input type="text" ng-model="emp.IdentityNumber" />
+                </td>
+                <td ng-hide="a">
+
+                    {{emp.IdentityNumber}}
+
+
+                </td>
+
+                <td ng-hide="a">
+
+                    {{emp.DateOfBirth }}
+
+
+                </td>
+
+                <td ng-show="a">
+                    <input type="text" ng-model="emp.DateOfBirth" />
+                </td>
+
+
+
+
+                <td>
+                    <span ng-hide="a" ng-click="a=!a">Edit</span>
+                    <span ng-show="a" ng-click="a=!a">Cancel</span>
+                    <span ng-show="a" ng-click="UpdateEmployee(emp)">Update</span>
+                    <span ng-click="deleteEmployee(emp,$index)">Delete</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="dvAddEmployee" ng-show="dvEmployee">
+        <p class="dvTask">{{Action}} New Employee</p>
+        <table>
+            <tr>
+                <td>Name : </td>
+                <td>
+                    <input type="text" id="txtFirstName" ng-model="Employee.FirstName" />
+                </td>
+            </tr>
+            <tr>
+                <td>Surname : </td>
+                <td>
+                    <input type="text" id="txtSurname" ng-model="Employee.Surname" />
+                </td>
+            </tr>
+            <tr>
+                <td>IdentityType : </td>
+                <td>
+                    <input type="text" id="txtIdentityType" ng-model="Employee.IdentityType" />
+                </td>
+            </tr>
+            <tr>
+                <td>IdentityNumber  : </td>
+                <td>
+                    <input type="text" id="txtIdentityNumber " ng-model="Employee.IdentityNumber" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>DateOfBirth  : </td>
+                <td>
+                    <input type="text" id="txtDateOfBirth " ng-model="Employee.DateOfBirth" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit" ng-click="AddEmployee(Employee)" />
+    </div>
+</div>  
